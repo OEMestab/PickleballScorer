@@ -71,4 +71,16 @@
             android:elevation="8dp" />
 
     </LinearLayout>
+
+    <!-- Watermark -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Created By: Ken Crisostomo @2026"
+        android:textSize="12sp"
+        android:textColor="#80FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="16dp" />
+
 </FrameLayout>

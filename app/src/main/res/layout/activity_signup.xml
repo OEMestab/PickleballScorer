@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Player Names"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team 1"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etTeam1Player1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player 1 Name" />
+
+    <EditText
+        android:id="@+id/etTeam1Player2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player 2 Name"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team 2"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etTeam2Player1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player 1 Name" />
+
+    <EditText
+        android:id="@+id/etTeam2Player2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player 2 Name"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btnGenerateBracket"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Generate Bracket"
+        android:textSize="18sp" />
+
+</LinearLayout>

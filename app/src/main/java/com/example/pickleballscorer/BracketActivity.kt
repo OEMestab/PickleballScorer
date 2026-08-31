@@ -33,15 +33,14 @@ class BracketActivity : AppCompatActivity() {
             tvTeam2.text = "$t2p1 & $t2p2"
         }
 
-        // 4. Pass everything to the final scoreboard (MainActivity)
         btnStart.setOnClickListener {
-            val finalIntent = Intent(this, MainActivity::class.java)
-            finalIntent.putExtra("GAME_MODE", gameMode)
-            finalIntent.putExtra("STARTING_TEAM", startingTeam) // Passed to MainActivity
-            finalIntent.putExtra("T1P1", t1p1)
-            finalIntent.putExtra("T2P1", t2p1)
-            finalIntent.putExtra("T1P2", t1p2)
-            finalIntent.putExtra("T2P2", t2p2)
+            val finalIntent = Intent(this, SinglesActivity::class.java).apply {
+                putExtra("GAME_MODE", gameMode)
+                putExtra("STARTING_TEAM", startingTeam)
+                putExtra("T1P1", t1p1)
+                putExtra("T2P1", t2p1)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
             startActivity(finalIntent)
         }
     }

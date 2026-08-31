@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".SinglesActivity">
+
+    <!-- Top Section: Scores and Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="48dp">
+
+        <Button
+            android:id="@+id/btnTeam1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ T1" />
+
+        <TextView
+            android:id="@+id/tvTeam1Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="16dp"/>
+
+        <TextView
+            android:id="@+id/tvTeam2Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="16dp"/>
+
+        <Button
+            android:id="@+id/btnTeam2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ T2" />
+    </LinearLayout>
+
+    <!-- Middle Section: Visual Court -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1E5631"
+        android:layout_margin="8dp">
+
+        <!-- Center Net -->
+        <View
+            android:id="@+id/lineNet"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#FFFFFF"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Top Kitchen Line -->
+        <View
+            android:id="@+id/lineKitchenTop"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/lineNet"
+            android:layout_marginBottom="50dp" />
+
+        <!-- Bottom Kitchen Line -->
+        <View
+            android:id="@+id/lineKitchenBottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/lineNet"
+            android:layout_marginTop="50dp" />
+
+        <!-- Center Service Line -->
+        <View
+            android:id="@+id/lineCenter"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Team 1 Player (Top Court) -->
+        <TextView
+            android:id="@+id/tvPlayerTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👤 P1"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/lineKitchenTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Team 2 Player (Bottom Court) -->
+        <TextView
+            android:id="@+id/tvPlayerBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👤 P1"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/lineKitchenBottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Bottom Section: Game State -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+        <Button
+            android:id="@+id/btnFault"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Fault (Missed Rally)"
+            android:backgroundTint="#D32F2F"
+            android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/btnRecall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recall"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>

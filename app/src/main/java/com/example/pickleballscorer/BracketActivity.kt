@@ -34,11 +34,19 @@ class BracketActivity : AppCompatActivity() {
         }
 
         btnStart.setOnClickListener {
-            val finalIntent = Intent(this, SinglesActivity::class.java).apply {
+            val targetActivity = if (gameMode == "SINGLES") {
+                SinglesActivity::class.java
+            } else {
+                DoublesActivity::class.java
+            }
+
+            val finalIntent = Intent(this, targetActivity).apply {
                 putExtra("GAME_MODE", gameMode)
                 putExtra("STARTING_TEAM", startingTeam)
                 putExtra("T1P1", t1p1)
                 putExtra("T2P1", t2p1)
+                putExtra("T1P2", t1p2)
+                putExtra("T2P2", t2p2)
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
             startActivity(finalIntent)

@@ -4,40 +4,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="32dp">
+    android:padding="16dp"
+    android:background="#121212">
 
+    <!-- The Coin (Solid background to show the 3D flip) -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Who Serves First?"
-        android:textSize="32sp"
+        android:id="@+id/tvCoin"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#FFD700"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Team 1"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="48dp" />
+        android:layout_marginBottom="32dp" />
 
-    <!-- A giant coin emoji that will change into text when tossed -->
+    <!-- The Result Text -->
     <TextView
         android:id="@+id/tvTossResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🪙"
-        android:textSize="100sp"
-        android:textAlignment="center"
+        android:text="Who serves first?"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:layout_marginBottom="48dp" />
 
+    <!-- The Toss Button -->
     <Button
-        android:id="@+id/btnTossCoin"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="Toss Coin"
-        android:textSize="24sp"
-        android:layout_marginBottom="24dp" />
-
-    <Button
-        android:id="@+id/btnContinueToss"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Continue to Signup"
-        android:textSize="18sp"
-        android:visibility="gone" /> <!-- Hidden until the coin is tossed -->
+        android:id="@+id/btnToss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FLIP COIN"
+        android:textSize="20sp"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="12dp"/>
 
 </LinearLayout>

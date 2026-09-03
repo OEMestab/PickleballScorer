@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <!-- 1. Background Image with centerCrop to prevent stretching -->
     <ImageView
@@ -30,61 +31,62 @@
         android:contentDescription="Settings" />
 
     <!-- 3. Your original UI content centered on top -->
+
+    <!-- Watermark -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="32dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Game Mode"
-            android:textSize="32sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.02"
-            android:layout_marginBottom="8dp" />
+            android:text="Select Game Mode"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="How are we playing today?"
-            android:textSize="16sp"
-            android:textColor="#E0E0E0"
+            android:layout_marginBottom="48dp"
             android:fontFamily="sans-serif-medium"
-            android:layout_marginBottom="48dp" />
+            android:text="How are we playing today?"
+            android:textColor="#E0E0E0"
+            android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSinglesMode"
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:text="👤  Singles"
-            android:textSize="22sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp"
             android:fontFamily="sans-serif-medium"
+            android:text="👤  Singles"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
             app:backgroundTint="#801E1E1E"
             app:cornerRadius="24dp"
             app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp"
-            android:layout_marginBottom="24dp" />
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDoublesMode"
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:text="👥  Doubles"
-            android:textSize="22sp"
-            android:textColor="#FFFFFF"
+            android:elevation="8dp"
             android:fontFamily="sans-serif-medium"
+            android:text="👥  Doubles"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
             app:backgroundTint="#E62E7D32"
-            app:cornerRadius="24dp"
-            android:elevation="8dp" />
+            app:cornerRadius="24dp" />
 
     </LinearLayout>
 
-    <!-- Watermark -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

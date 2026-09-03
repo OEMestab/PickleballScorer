@@ -156,10 +156,14 @@ class BracketView @JvmOverloads constructor(
                     // Display the pending match text (e.g., Alice vs Bob)
                     val display = "$p1Text vs $p2Text"
                     
-                    // Shrink text slightly if names are long
-                    if (display.length > 15) {
-                        textPaint.textSize = 10f * density
+                    // Shrink text slightly if names are long (especially useful for Doubles)
+                    var adjustedSize = 14f * density
+                    if (display.length > 25) {
+                        adjustedSize = 8.5f * density
+                    } else if (display.length > 15) {
+                        adjustedSize = 10f * density
                     }
+                    textPaint.textSize = adjustedSize
                     
                     canvas.drawText(display, pos.x + boxWidth / 2, textY, textPaint)
                     textPaint.textSize = 14f * density // reset

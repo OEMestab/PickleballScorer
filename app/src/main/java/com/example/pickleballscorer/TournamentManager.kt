@@ -14,10 +14,12 @@ object TournamentManager {
     )
 
     var isTournamentActive = false
+    var gameMode = "SINGLES"
     var tournamentRounds = mutableListOf<List<Match>>()
 
-    fun startTournament(players: List<String>) {
+    fun startTournament(players: List<String>, mode: String = "SINGLES") {
         isTournamentActive = true
+        gameMode = mode
         tournamentRounds.clear()
 
         val shuffled = players.shuffled()

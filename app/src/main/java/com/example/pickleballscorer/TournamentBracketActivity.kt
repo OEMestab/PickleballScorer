@@ -45,10 +45,21 @@ class TournamentBracketActivity : AppCompatActivity() {
             // Display the current live match
             tvUpcomingPlayers.text = "Next: ${match.p1} vs ${match.p2}"
             btnStart.setOnClickListener {
+                val mode = TournamentManager.gameMode
                 val intent = Intent(this, CoinTossActivity::class.java).apply {
-                    putExtra("GAME_MODE", "SINGLES")
-                    putExtra("T1P1", match.p1)
-                    putExtra("T2P1", match.p2)
+                    putExtra("GAME_MODE", mode)
+                    if (mode == "SINGLES") {
+                        putExtra("T1P1", match.p1)
+                        putExtra("T2P1", match.p2)
+                    } else {
+                        // Split the combined team name back into individual players
+                        val t1 = match.p1?.split(" & ") ?: listOf("P1", "P2")
+                        val t2 = match.p2?.split(" & ") ?: listOf("P3", "P4")
+                        putExtra("T1P1", t1.getOrElse(0) { "P1" })
+                        putExtra("T1P2", t1.getOrElse(1) { "P2" })
+                        putExtra("T2P1", t2.getOrElse(0) { "P3" })
+                        putExtra("T2P2", t2.getOrElse(1) { "P4" })
+                    }
                 }
                 startActivity(intent)
             }

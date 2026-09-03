@@ -32,6 +32,10 @@ class DoublesActivity : AppCompatActivity() {
 
     private val history = mutableListOf<DoublesGameState>()
 
+    // Required for Tournament tracking
+    private var originalT1Name = ""
+    private var originalT2Name = ""
+
     // Current players residing in the left/right boxes
     private var t1LeftPlayer = ""
     private var t1RightPlayer = ""
@@ -65,6 +69,9 @@ class DoublesActivity : AppCompatActivity() {
         val t1p2 = intent.getStringExtra("T1P2") ?: "P2"
         val t2p1 = intent.getStringExtra("T2P1") ?: "P3"
         val t2p2 = intent.getStringExtra("T2P2") ?: "P4"
+
+        originalT1Name = "$t1p1 & $t1p2"
+        originalT2Name = "$t2p1 & $t2p2"
 
         // Initial setup
         t1LeftPlayer = t1p1
@@ -184,9 +191,13 @@ class DoublesActivity : AppCompatActivity() {
     }
 
     fun launchWinnerScreen() {
-        val winnerName = if (team1Score > team2Score) "$t1LeftPlayer & $t1RightPlayer" else "$t2LeftPlayer & $t2RightPlayer"
+        val exactWinnerName = if (team1Score > team2Score) originalT1Name else originalT2Name
         val intent = Intent(this, WinnerActivity::class.java)
-        intent.putExtra("WINNER_NAME", winnerName)
+        intent.putExtra("WINNER_NAME", exactWinnerName)
+        intent.putExtra("T1_NAME", originalT1Name)
+        intent.putExtra("T2_NAME", originalT2Name)
+        intent.putExtra("T1_SCORE", team1Score)
+        intent.putExtra("T2_SCORE", team2Score)
         startActivity(intent)
     }
 

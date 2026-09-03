@@ -73,7 +73,7 @@ class CoinTossActivity : AppCompatActivity() {
                     tvResult.text = "$winnerText Wins the Toss!"
 
                     val targetClass = if (TournamentManager.isTournamentActive) {
-                        SinglesActivity::class.java
+                        if (gameMode == "SINGLES") SinglesActivity::class.java else DoublesActivity::class.java
                     } else {
                         BracketActivity::class.java
                     }

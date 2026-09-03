@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Pickleball Scorer</string>
+    <string name="desc_settings">Settings</string>
+    <string name="title_select_game_mode">Select Game Mode</string>
+    <string name="subtitle_how_playing">How are we playing today?</string>
+    <string name="btn_singles">👤  Singles</string>
+    <string name="btn_doubles">👥  Doubles</string>
+    <string name="watermark_created_by">Created By: Ken Crisostomo \@2026</string>
 </resources>

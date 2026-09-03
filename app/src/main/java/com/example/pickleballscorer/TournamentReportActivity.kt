@@ -92,12 +92,15 @@ class TournamentReportActivity : AppCompatActivity() {
     private fun generatePdf(uri: android.net.Uri) {
         val pdfContent = findViewById<LinearLayout>(R.id.llPdfContent)
 
-        // 1. Measure the view to get its full height/width, not just what's visible on screen
+        // 1. Measure the view with UNSPECIFIED so it can expand beyond the screen width
+        // if the bracket diagram (BracketView) is very wide for many players.
         pdfContent.measure(
-            View.MeasureSpec.makeMeasureSpec(pdfContent.width, View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
-        val viewWidth = pdfContent.measuredWidth
+
+        // The PDF width should be whichever is larger: the physical screen width, or the full unclipped bracket width
+        val viewWidth = kotlin.math.max(pdfContent.width, pdfContent.measuredWidth)
         val viewHeight = pdfContent.measuredHeight
 
         pdfContent.layout(0, 0, viewWidth, viewHeight)

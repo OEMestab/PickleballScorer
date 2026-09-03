@@ -120,6 +120,10 @@ class SinglesActivity : AppCompatActivity() {
         val winnerName = if (team1Score > team2Score) t1p1 else t2p1
         val intent = Intent(this, WinnerActivity::class.java)
         intent.putExtra("WINNER_NAME", winnerName)
+        intent.putExtra("T1_NAME", t1p1)
+        intent.putExtra("T2_NAME", t2p1)
+        intent.putExtra("T1_SCORE", team1Score)
+        intent.putExtra("T2_SCORE", team2Score)
         startActivity(intent)
     }
 

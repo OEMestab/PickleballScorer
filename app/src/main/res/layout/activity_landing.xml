@@ -17,6 +17,18 @@
         android:layout_height="match_parent"
         android:background="#66000000" />
 
+    <!-- Settings Button -->
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_preferences"
+        app:tint="#FFFFFF"
+        android:contentDescription="Settings" />
+
     <!-- 3. Your original UI content centered on top -->
     <LinearLayout
         android:layout_width="match_parent"

@@ -3,6 +3,7 @@ package com.example.pickleballscorer
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class LandingActivity : AppCompatActivity() {
@@ -12,6 +13,12 @@ class LandingActivity : AppCompatActivity() {
 
         val btnSingles = findViewById<Button>(R.id.btnSinglesMode)
         val btnDoubles = findViewById<Button>(R.id.btnDoublesMode)
+        val btnSettings = findViewById<ImageButton>(R.id.btnSettings)
+
+        btnSettings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
 
         btnSingles.setOnClickListener {
             val intent = Intent(this, PlayerCountActivity::class.java)

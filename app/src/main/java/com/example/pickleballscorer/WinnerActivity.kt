@@ -21,18 +21,22 @@ class WinnerActivity : AppCompatActivity() {
             val grandChampion = intent.getBooleanExtra("GRAND_CHAMPION", false)
             if (grandChampion) {
                 tvWinner.text = "🏆 GRAND CHAMPION 🏆\n$winnerName"
-                btnPlayAgain.text = "End Tournament"
+                btnPlayAgain.text = "View Tournament Report"
                 btnPlayAgain.setOnClickListener {
-                    TournamentManager.endTournament()
-                    val intent = Intent(this, LandingActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    val intent = Intent(this, TournamentReportActivity::class.java)
                     startActivity(intent)
                 }
             } else {
                 tvWinner.text = "Match Winner:\n$winnerName"
                 btnPlayAgain.text = "Next Match"
                 btnPlayAgain.setOnClickListener {
-                    TournamentManager.reportMatchWinner(winnerName)
+                    val t1Name = intent.getStringExtra("T1_NAME") ?: ""
+                    val t2Name = intent.getStringExtra("T2_NAME") ?: ""
+                    val t1Score = intent.getIntExtra("T1_SCORE", 0)
+                    val t2Score = intent.getIntExtra("T2_SCORE", 0)
+                    
+                    TournamentManager.reportMatchWinner(winnerName, t1Score, t2Score, t1Name, t2Name)
+                    
                     val nextMatch = TournamentManager.getNextMatch()
                     if (nextMatch == null) {
                         val champ = TournamentManager.getTournamentWinner() ?: winnerName

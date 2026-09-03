@@ -1,10 +1,14 @@
 package com.example.pickleballscorer
 
+import kotlin.math.max
+
 object TournamentManager {
     data class Match(
         val id: Int,
         var p1: String? = null,
         var p2: String? = null,
+        var p1Score: Int? = null,
+        var p2Score: Int? = null,
         var winner: String? = null,
         var nextMatch: Match? = null
     )
@@ -54,18 +58,60 @@ object TournamentManager {
         }
         tournamentRounds.addAll(rounds)
 
-        // Populate Round 1 with players and BYEs
-        val r1 = tournamentRounds.first()
-        var playerIdx = 0
+        // The goal: Distribute BYEs as evenly as possible across the branches
+        // so no one side of the bracket is heavily favored or skipped.
+        val totalSlots = powerOf2
+        val numByes = totalSlots - numPlayers
         
-        for (i in 0 until powerOf2) {
-            val match = r1[i / 2]
-            val p = if (playerIdx < numPlayers) shuffled[playerIdx++] else "BYE"
-            if (i % 2 == 0) match.p1 = p else match.p2 = p
+        val slots = Array<String?>(totalSlots) { null }
+        
+        // 1. We'll distribute BYEs using a standard seeded bracket spacing algorithm.
+        // We know we need `numByes`. We place them in specific indices to balance the tree.
+        val byeIndices = getSeededIndices(totalSlots).take(numByes).toSet()
+
+        var playerIdx = 0
+        for (i in 0 until totalSlots) {
+            if (i in byeIndices) {
+                slots[i] = "BYE"
+            } else {
+                slots[i] = shuffled[playerIdx++]
+            }
         }
 
-        // Automatically resolve any matches involving Byes
+        // 2. Populate Round 1 with the assigned slots
+        val r1 = tournamentRounds.first()
+        for (i in 0 until totalSlots step 2) {
+            val match = r1[i / 2]
+            match.p1 = slots[i]
+            match.p2 = slots[i + 1]
+        }
+
+        // 3. Automatically resolve any matches involving Byes
         processAllByes()
+    }
+
+    /**
+     * Generates a list of indices representing a balanced spread across a binary tree.
+     * For example, for 8 slots, instead of placing BYEs at 0, 1, 2, it spreads them
+     * out to branches on opposite sides of the tree: [0, 7, 3, 4, 1, 6, 2, 5].
+     */
+    private fun getSeededIndices(powerOf2: Int): List<Int> {
+        if (powerOf2 <= 1) return listOf(0)
+        
+        var currentSequence = mutableListOf(0, 1)
+        var currentSize = 2
+
+        while (currentSize < powerOf2) {
+            val nextSize = currentSize * 2
+            val nextSequence = mutableListOf<Int>()
+            for (value in currentSequence) {
+                nextSequence.add(value)
+                nextSequence.add((nextSize - 1) - value)
+            }
+            currentSequence = nextSequence
+            currentSize = nextSize
+        }
+        return currentSequence
     }
 
     private fun processAllByes() {
@@ -110,10 +156,18 @@ object TournamentManager {
         return null
     }
 
-    fun reportMatchWinner(winner: String) {
+    fun reportMatchWinner(winner: String, score1: Int = 0, score2: Int = 0, player1Name: String = "", player2Name: String = "") {
         val match = getNextMatch()
         if (match != null) {
             match.winner = winner
+            if (match.p1 == player1Name) {
+                match.p1Score = score1
+                match.p2Score = score2
+            } else if (match.p1 == player2Name) {
+                match.p1Score = score2
+                match.p2Score = score1
+            }
+
             val next = match.nextMatch
             if (next != null) {
                 if (next.p1 == null) next.p1 = winner

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ScrollView
+        android:id="@+id/svReportContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1E1E1E">
+
+        <!-- This container is what we will snapshot for the PDF -->
+        <LinearLayout
+            android:id="@+id/llPdfContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Official Tournament Report"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/tvReportWinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grand Champion: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#388E3C"
+                android:gravity="center"
+                android:layout_marginBottom="32dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bracket Diagram:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp">
+
+                <com.example.pickleballscorer.BracketView
+                    android:id="@+id/reportBracketView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Match History &amp; Scores:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:id="@+id/llMatchHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="48dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Verified By:"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvScoreKeeper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Score Keeper: Unknown"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnExportPdf"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Export PDF" />
+
+        <Button
+            android:id="@+id/btnEndTournament"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#D32F2F"
+            android:text="End Tournament" />
+
+    </LinearLayout>
+
+</LinearLayout>

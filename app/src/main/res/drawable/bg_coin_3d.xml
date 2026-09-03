@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer Rim (Shadow/Depth) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#B8860B" /> <!-- Dark Goldenrod -->
+        </shape>
+    </item>
+
+    <!-- Coin Face with Radial Gradient to simulate a shiny 3D dome -->
+    <item
+        android:top="4dp"
+        android:left="2dp"
+        android:right="6dp"
+        android:bottom="8dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="140dp"
+                android:centerX="0.3"
+                android:centerY="0.3"
+                android:startColor="#FFF3A1"
+                android:centerColor="#FFD700"
+                android:endColor="#DAA520" />
+            <stroke
+                android:width="2dp"
+                android:color="#FFF8DC" />
+        </shape>
+    </item>
+
+    <!-- Inner Groove / Highlight Ring -->
+    <item
+        android:top="12dp"
+        android:left="10dp"
+        android:right="14dp"
+        android:bottom="16dp">
+        <shape android:shape="oval">
+            <stroke
+                android:width="1.5dp"
+                android:color="#E8B923" />
+        </shape>
+    </item>
+
+</layer-list>

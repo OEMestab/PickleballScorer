@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <TextView
+        android:id="@+id/tvTournamentMatchTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tournament Bracket"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Two-way scrolling to explore large tournament pyramids -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <com.example.pickleballscorer.BracketView
+                android:id="@+id/bracketView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvUpcomingPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next Match: P1 vs P2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnStartTournamentMatch"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Start Next Match"
+        android:textSize="20sp" />
+</LinearLayout>

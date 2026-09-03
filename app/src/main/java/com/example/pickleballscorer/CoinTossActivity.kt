@@ -72,7 +72,13 @@ class CoinTossActivity : AppCompatActivity() {
                     val winnerText = if (startingTeam == 1) team1Name.replace("\n", " ") else team2Name.replace("\n", " ")
                     tvResult.text = "$winnerText Wins the Toss!"
 
-                    val finalIntent = Intent(this@CoinTossActivity, BracketActivity::class.java).apply {
+                    val targetClass = if (TournamentManager.isTournamentActive) {
+                        SinglesActivity::class.java
+                    } else {
+                        BracketActivity::class.java
+                    }
+
+                    val finalIntent = Intent(this@CoinTossActivity, targetClass).apply {
                         putExtra("GAME_MODE", gameMode)
                         putExtra("STARTING_TEAM", startingTeam)
                         putExtra("T1P1", t1p1)

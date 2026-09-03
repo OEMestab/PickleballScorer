@@ -14,12 +14,12 @@ class LandingActivity : AppCompatActivity() {
         val btnDoubles = findViewById<Button>(R.id.btnDoublesMode)
 
         btnSingles.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            intent.putExtra("GAME_MODE", "SINGLES")
+            val intent = Intent(this, PlayerCountActivity::class.java)
             startActivity(intent)
         }
 
         btnDoubles.setOnClickListener {
+            TournamentManager.endTournament()
             val intent = Intent(this, SignupActivity::class.java)
             intent.putExtra("GAME_MODE", "DOUBLES")
             startActivity(intent)
